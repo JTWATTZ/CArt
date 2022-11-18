@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<a href="{% url 'home' %}">Go to Add To Cart Home</a>
+<div class="container mt-5"></div>
+<h1>Your Cart</h1>
+{% for fruit in fruits %}
+<!-- var for fruit in fruits and attribute for Produce model, for loop displays contents of context dict -->
+<!-- this id below matches id in db, id from user input and points to urls.py remove_produce path -->
+<p class="mt-3"><b>{{fruit.fruit}} {{fruit.price}}</b> <a href="{% url 'remove_produce' fruit.id %}">DELETE</a></p>
+
+{% endfor %}
+
+<h2>Total Price</h2>
+{{total_price}}
+<h2>Quantity</h2>
+{{quantity}}
+
+
+{% endblock %}
